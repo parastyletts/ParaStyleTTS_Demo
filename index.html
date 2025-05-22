@@ -4,15 +4,124 @@
     <meta charset="UTF-8">
     <title>ParaStyleTTS</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
-        h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-        .demo { margin-bottom: 25px; }
-        audio { width: 100%; margin-top: 5px; }
-        .meta { font-size: 0.9em; color: #555; }
-    </style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2 {
+      color: #444;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .sample {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    audio {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+
+    .emotion-row {
+        margin-bottom: 40px;
+    }
+
+    .emotion-row h2 {
+        margin-bottom: 15px;
+        font-size: 1.5em;
+    }
+
+    .emotion-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .sample {
+        flex: 1 1 300px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+  </style>
 </head>
 <body>
     <h1>ParaStyleTTS: Toward Efficient and Robust Paralinguistic Style Control for Expressive Text-to-Speech Generation</h1>
+    <p><strong>Controlling speaking style in text-to-speech (TTS) systems has become a growing focus in both academia and industry. While many existing approaches rely on reference audio to guide style generation, such methods are often impractical due to privacy concerns and limited accessibility. More recently, large language models (LLMs) have been used to control speaking style through natural language prompts; however, their high computational cost, lack of interpretability, and sensitivity to prompt phrasing limit their applicability in real-time and resource-constrained environments.
+In this work, we propose ParaStyleTTS, a lightweight and interpretable TTS framework that enables expressive style control from text prompts alone.ParaStyleTTS features a novel two-level style adaptation architecture that separates prosodic and paralinguistic speech style modelling. It allows fine-grained and robust control over factors such as emotion, gender, and age. Unlike LLM-based methods, ParaStyleTTS maintains consistent style realization across varied prompt formulations and is well-suited for real-world applications, including on-device and low-resource deployment.
+Experimental results show that ParaStyleTTS generates high-quality speech with performance comparable to state-of-the-art LLM-based systems while being 30x faster, using 8x fewer parameters, and requiring 2.5x less CUDA memory. Moreover, ParaStyleTTS exhibits superior robustness and controllability over paralinguistic speaking styles, providing a practical and efficient solution for style-controllable text-to-speech generation.</strong></p>
     <!-- Add more samples below -->
+
+    <!-- Overall Section -->
+    <div class="section">
+        <h2>Multilingual Speech generation</h2>
+        <h3>Prompt: A female speaking [English/Chinese] with neutral emotion</h3>
+        <div class="sample">
+            <p>The weather looks perfect for a walk in the park.</p>
+            <audio controls src="sample/overall/en_0.wav"></audio>
+            <p>Technology is changing the way we live and work.</p>
+            <audio controls src="sample/overall/en_1.wav"></audio>
+            <p>In the end, it's the simple moments that matter most.</p>
+            <audio controls src="sample/overall/en_2.wav"></audio>
+        </div>
+        <div class="sample">
+            <p>今天的天气非常适合散步</p>
+            <audio controls src="sample/overall/ch_0.wav"></audio>
+            <p>科技正在改变我们的生活方式</p>
+            <audio controls src="sample/overall/ch_1.wav"></audio>
+            <p>到头来，最重要的是那些简单的瞬间.</p>
+            <audio controls src="sample/overall/ch_2.wav"></audio>
+        </div>
+
+        
+        <h2>Emotion and Gender Style Control</h2>
+        <h3>Prompt: A [male/female] speaking [English/Chinese] with [neutral/sad/happy/angry/surprise] emotion</h3>
+
+        <!-- Happy - Female -->
+        <h2>😊 Happy </h2>
+        <div class="emotion-row">
+            <div class="sample">
+                <h3>Female (EN)</h3>
+                <p>I'm so excited to see you again!</p>
+                <audio controls src="sample/emotion/en_female_happy_0.wav"></audio>
+                <p>This is the best day I’ve had in a long time.</p>
+                <audio controls src="sample/emotion/en_female_happy_1.wav"></audio>
+            </div>
+
+            <div class="sample">
+                <h3>女声 (ch)</h3>
+                <p>太开心了，终于又见到你了！</p>
+                <audio controls src="sample/emotion/ch_female_happy_0.wav"></audio>
+                <p>今天真是我最近最快乐的一天！</p>
+                <audio controls src="sample/emotion/ch_female_happy_1.wav"></audio>
+            </div>
+
+            <div class="sample">
+                <h3>Male (EN)</h3>
+                <p>I'm so excited to see you again!</p>
+                <audio controls src="sample/emotion/en_male_happy_0.wav"></audio>
+                <p>This is the best day I’ve had in a long time.</p>
+                <audio controls src="sample/emotion/en_male_happy_1.wav"></audio>
+            </div>
+
+            <div class="sample">
+                <h3>男声 (ch)</h3>
+                <p>太开心了，终于又见到你了！</p>
+                <audio controls src="sample/emotion/ch_male_happy_0.wav"></audio>
+                <p>今天真是我最近最快乐的一天！</p>
+                <audio controls src="sample/emotion/ch_male_happy_1.wav"></audio>
+            </div>
+        </div>
+        
+
+    
 </body>
 </html>
